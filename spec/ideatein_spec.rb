@@ -5,7 +5,14 @@ describe Ideatein do
     expect(Ideatein::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  describe "#authentication_cookies" do
+    it "allows set without errors" do
+      expect{ Ideatein.authentication_cookies = "Foobar" }.to_not raise_error
+    end
+
+    it "is able to remember the value" do
+      Ideatein.authentication_cookies = "Foobar"
+      expect(Ideatein.authentication_cookies).to eq "Foobar"
+    end
   end
 end
